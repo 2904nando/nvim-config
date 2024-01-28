@@ -1,25 +1,4 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
-	})
-end
-vim.opt.rtp:prepend(lazypath)
-
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
-local status, lazy = pcall(require, "lazy")
-if not status then
-	return
-end
-
-lazy.setup({
+return {
 	-- Lua functions used by many plugins
 	"nvim-lua/plenary.nvim",
 
@@ -57,7 +36,7 @@ lazy.setup({
 
 	-- Fuzzy Finding
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-	{ "nvim-telescope/telescope.nvim", branch = "0.1.x" },
+	{ "nvim-telescope/telescope.nvim", branch = "0.1.x", dependencies = {"nvim-lua/plenary.nvim"} },
 
 	-- Autocompletion
 	"hrsh7th/nvim-cmp",
@@ -76,7 +55,7 @@ lazy.setup({
 	-- Configuring LSP Servers
 	"neovim/nvim-lspconfig",
 	"hrsh7th/cmp-nvim-lsp",
-	{ "glepnir/lspsaga.nvim", branch = "main" },
+	{ "glepnir/lspsaga.nvim", branch = "main", event = 'LspAttach' },
 	-- "jose-elias-alvarez/typescript.nvim", -- Removed as it's deprecated...
 	{
 		"pmizio/typescript-tools.nvim",
@@ -133,4 +112,4 @@ lazy.setup({
 
 	-- Tabies for buffers
 	{ "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
-})
+}

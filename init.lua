@@ -1,14 +1,15 @@
 -- Core settings
-require("luiskumruyan.plugins-setup")
-require("luiskumruyan.core.options")
-require("luiskumruyan.core.keymaps")
-require("luiskumruyan.core.colorscheme")
+-- require("luiskumruyan.plugins-setup")
+require("plugins-setup")
+require("core.options")
+require("core.keymaps")
+require("core.colorscheme")
 
 -- Plugins
 
-vim.notify("Loading plugins...", vim.log.levels.INFO, {
-	title = "Nvim Init",
-})
+-- vim.notify("Loading plugins...", vim.log.levels.INFO, {
+-- 	title = "Nvim Init",
+-- })
 
 require("luiskumruyan.plugins.comment")
 require("luiskumruyan.plugins.nvim-tree")
@@ -29,10 +30,10 @@ require("luiskumruyan.plugins.project")
 require("luiskumruyan.plugins.swenv")
 require("luiskumruyan.plugins.bufferline")
 
-vim.notify("Plugins loaded!", vim.log.levels.INFO, {
-	title = "Nvim Init",
-	icon = "",
-})
+-- vim.notify("Plugins loaded!", vim.log.levels.INFO, {
+-- 	title = "Nvim Init",
+-- 	icon = "",
+-- })
 
 -- Autocommands
-require("luiskumruyan.autocommands")
+require("autocommands")
